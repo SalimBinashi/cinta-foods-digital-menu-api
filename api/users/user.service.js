@@ -8,15 +8,13 @@ module.exports = {
     create: (data, callback) => {
         //create a query
         pool.query(
-            `INSERT into users(firstName, lastName, gender, email, password, phoneNumber) VALUES(?,?,?,?,?,?)`,
+            `INSERT into users(firstName, lastName, email, password) VALUES(?,?,?,?)`,
             // init the data to be passed during runtime            
             [
                 data.first_name,
                 data.last_name,
-                data.gender,
                 data.email,
                 data.password,
-                data.phone_Number
             ],
             // initialize the callback parameters
             (error, results, fields) => {
@@ -67,6 +65,7 @@ module.exports = {
             if(error) {
                 return callback(error);
             }
+            
             return callback(email, results[0]);
         })
     },

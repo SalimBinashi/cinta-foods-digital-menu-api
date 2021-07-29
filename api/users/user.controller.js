@@ -140,7 +140,7 @@ module.exports = {
             if (!results) {
                 return res.json({
                     success: 0,
-                    data: "Invalid email or password"
+                    message: "Invalid email or password"
                 });
             }
             // if user exists, check for password
@@ -152,6 +152,8 @@ module.exports = {
                 // create and intialize the web token
                 const jsontoken = sign({ result: results}, process.env.JSWBTOKEN, 
                     { expiresIn: "1h" });
+                // create session
+                req.session.user = result  
                     // login user
                 return res.json({
                     success: 1,
@@ -161,8 +163,8 @@ module.exports = {
                 // else if incorrect password  
             } else {
                 return res.json({
-                    success: 1,
-                    data: "Invalid email or password"
+                    success: 0,
+                    message: "Invalid email or password"
                 });
             }
         });
