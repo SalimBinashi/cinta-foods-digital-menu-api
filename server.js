@@ -12,7 +12,7 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 // initialize express app
 const app = express();
-const userRouter = require("./api/users/user.router");
+const userRouter = require("./api/users/meals.router");
 
 
 // convert JSON object to Javascript
