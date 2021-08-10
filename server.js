@@ -12,7 +12,8 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 // initialize express app
 const app = express();
-const userRouter = require("./api/users/meals.router");
+const mealsRouter = require("./api/users/meals.router");
+const tablesRouter = require("./api/tables/tables.router");
 
 
 // convert JSON object to Javascript
@@ -42,7 +43,8 @@ app.use(
     })
 );
 //listen
-app.use("/", userRouter);
+app.use("/", mealsRouter);
+app.use("/tables", tablesRouter);
 
 // listen to a port
 app.listen(process.env.APP_PORT, () => {
