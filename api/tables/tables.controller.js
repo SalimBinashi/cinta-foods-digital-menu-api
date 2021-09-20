@@ -20,7 +20,7 @@ module.exports = {
     getTables((error, results) => {
       // if an error occurs
       if (error) {
-        console.log(err);
+        console.log(error);
         return;
       }
 

@@ -48,5 +48,28 @@ module.exports = {
         }
         );
     },
+
+    //make order service
+    makeOrder: (data, callback) => {
+        //create a query
+        pool.query(
+            `INSERT into orders(orders, table_number, total) VALUES(?,?,?)`,
+            // init the data to be passed during runtime            
+            [
+                data.orders,
+                data.table_number,
+                data.total,
+            ],
+            // initialize the callback parameters
+            (error, results, fields) => {
+                // if an error is got return it in the callback
+                if(error) {
+                    return callback(error);
+                }
+                //else return the results
+                return callback(null, results)
+            }            
+        );
+    },
    
 };
