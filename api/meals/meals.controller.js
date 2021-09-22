@@ -3,7 +3,7 @@ const {
   getMains,
   getDrinks,
   getSides,
-  makeOrder
+  postOrder
 } = require("./meals.service");
 
 // create export module
@@ -57,8 +57,7 @@ module.exports = {
   },
 
   // make order controller
-  makeOrder: (req, res) => {
-    const body  = req.body;
+  postOrder: (req, res) => {
     /**
      * Call the create service which takes two params:
      * 1. body
@@ -68,7 +67,7 @@ module.exports = {
      * i. error
      * ii. results
      */
-     makeOrder(body, (err, results) => {
+     postOrder(req.body, (err, results) => {
         // if error is got
         if(err) {
             // log error to console
@@ -76,7 +75,7 @@ module.exports = {
             // return an internal server error
             return res.status(500).json({
                 success: 0,
-                message: "Database connection error"
+                message: err
             });
         }
         // if no error return success

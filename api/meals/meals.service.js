@@ -50,7 +50,7 @@ module.exports = {
     },
 
     //make order service
-    makeOrder: (data, callback) => {
+    postOrder: (data, callback) => {
         //create a query
         pool.query(
             `INSERT into orders(orders, table_number, total) VALUES(?,?,?)`,

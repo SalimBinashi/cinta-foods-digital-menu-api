@@ -12,18 +12,20 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 // initialize express app
 const app = express();
-const mealsRouter = require("./api/users/meals.router");
+const mealsRouter = require("./api/meals/meals.router");
 const tablesRouter = require("./api/tables/tables.router");
 
 
 // convert JSON object to Javascript
 app.use(express.json());
 // enable cookies in cors
-app.use(cors({
-    origin: ["http://localhost:3000"],
-    methods: ["GET", "POST", "PATCH"],
-    credentials: true
-}));
+app.use(cors());
+
+// {
+//     origin: ["http://localhost:3000"],
+//     methods: ["GET", "POST", "PATCH"],
+//     credentials: true
+// }
 
 // use cookie parser
 app.use(cookieParser());

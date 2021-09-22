@@ -1,4 +1,4 @@
-const { getDrinks, getSides, getMains, makeOrder } = require("./meals.controller");
+const { getDrinks, getSides, getMains, postOrder } = require("./meals.controller");
 
 const router = require("express").Router();
 
@@ -8,7 +8,7 @@ const router = require("express").Router();
 router.get("/getMains", getMains);
 router.get("/getDrinks", getDrinks);
 router.get("/getSides", getSides);
-router.get("/makeOrder", makeOrder);
+router.post("/order", postOrder)
 
 
 module.exports = router;
