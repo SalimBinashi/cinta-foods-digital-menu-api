@@ -49,6 +49,6 @@ app.use("/", mealsRouter);
 app.use("/tables", tablesRouter);
 
 // listen to a port
-app.listen(process.env.APP_PORT, () => {
+app.listen(process.env.PORT || 5000, () => {
     console.log("Server up and running on port: ",process.env.APP_PORT);
 });
